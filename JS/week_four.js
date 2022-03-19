@@ -76,7 +76,7 @@ console.log("Hello This is week 4");
 
 // const SumOdd=(sum,num)=> num%2===0 ? sum : num + sum;
 
-// numbersarray.reduce(SumOdd)
+// numbersarray.reduce(SumOdd,0)
 
 
 // Question 5: Return an object with sum of Odd numbers and sum of even numbers.
@@ -138,3 +138,133 @@ console.log("Hello This is week 4");
 // incrementThenSquare (2); //9
 
 // Write this function compose as a util so that you can use it for all your functional programming needs.
+
+
+//-------------------------------------------------------------------------------------------------------
+///////////////////////Home work Questions.
+
+// Question: Given an array of integers: numarray[1,2,3,4,5,66,77,88,99.1,3,5,6,7,8,9]
+// 1) Find the sum of all odd. numbers.
+
+// Solution: 
+//const numarray=[10,20,30,40]
+// const Odd=(sum,curr)=>curr%2===0? sum: curr + sum
+// numarray.reduce(Odd,0)
+
+
+// 2) Find the sum of all numbers at odd indices
+
+// Solution: 
+//const arr2=[1,2,3,4,5,6]
+// const oddIndicesSum = (acc, currValue, currIndex) => (currIndex % 2 !==0) ? acc + currValue :acc
+//  const output = arr2.reduce(oddIndicesSum,0);
+//  console.log(output);
+
+
+// 3) Find the biggest number in the array.
+
+// Solution 1: Math.max.apply(null,arr)
+
+//Solution 2: Math.max(...arr)
+
+//Solution 3: const biggestNumber = (acc, curr) => (curr>acc)?curr:acc;
+//  const output = arr.reduce(biggestNumber,0);
+//  console.log(output);
+
+
+// 4) Find the numbers. divisible by 10.
+
+// Solution: 
+// const arrray=[1,10,2,20,3,30]
+// const divby5=(num)=> (num%5===0)? num : 0;
+// const output2=arrray.filter(divby5)
+
+
+
+// 5) Return an array of numbers where odd numbers are incremented by one and even numbers are decremented by one.
+
+// Solution: const arr1=[1,2,3,4,5,6]
+// const increment=(num)=>num%2===0? num-1 : num+1;
+// const finaloutput=arr1.map(increment)
+
+// 6) return an object with Sum of all odd numbers and even numbers separately. 
+
+// Solution: const arr1=[1,2,3,4,5,6,7,8,9,0,50,51]
+// const InitialObj={even:0, odd: 0}
+// const objevenoddSum=(InitialObj,num)=> num%2===0 ? {...InitialObj, even: InitialObj.even+num} : {...InitialObj, odd: InitialObj.odd+num}
+// const output=arr1.reduce(objevenoddSum,InitialObj)
+// output // {even: 70, odd: 76}
+
+
+// 7) Given an array of string  Find the number of Strings with similar number of characters.
+// const input = ["apple", "orange", "mango","papaya"]
+// Output : { 5:3, 6:1}
+
+// solution 1: 
+// const similarChar = (acc, curr) => {
+//     if(curr.length in acc)
+//      {
+//     acc[curr.length]++;
+//      }
+//      else
+//     {
+//      acc[curr.length] = 1;
+//      }
+//       return acc;
+//      }
+//      const output = input.reduce(similarChar, {});
+//     console.log(output);
+
+
+// 8) return an array with strings which have vowels.
+// const input = ["apple", "orange", "mango","papaya"]
+
+
+//Solution 1: const wordsplay=["apple","dry","banana","rythm","fry","dio"]
+// const vowelfilter=(chars)=>chars.match(/[aeiou]/gi)?char:0
+// wordsplay.filter(vowelfilter)
+
+
+//Solution 2:
+//   const words1 = ["hello", "rhythm", "nice", "suspense", "thrill"];
+//   const checkContainsVowels = (prev, curr) => {
+//   let allVowels = /[aeiou]/gi;
+//   if (curr.match(allVowels)) prev.push(curr);
+//   return prev;
+//   };
+//   const containsVowels = words1.reduce(checkContainsVowels, []);
+//   console.log(containsVowels);
+
+// 9) Return an array of objects with key as item and value as number of characters in the string.
+//const input = ["apple", "orange", "mango","papaya"]
+
+//Solution: 
+// const input = ["apple", "orange", "mango","papaya"]
+// const op=input.reduce((acc,curr)=>({ ...acc,[curr]:curr.length}),[])  ///will return output in object.
+
+//const op=input.reduce((acc,curr)=>[ ...acc,{[curr]:curr.length}],[])  ////will return output in array.
+
+
+//------------------------------------------------------------------------------------
+
+//////////////////////The home work///////////////////
+
+//Question: Write a function compose (). which can take any number of functions and retun a function which will run the given functions in order when called with an argument.
+
+// Dummy Example
+// const increment = num => num + 1
+// const square = num => num * num;
+// const incrementThenSquare = compose (increment, square);
+
+// increment Then Square (2); //9
+
+//Solution for dummy: 
+// const compose = (...fns) => x => fns.reduceRight((y, f) => f(y), x)
+
+// const increment = num => num + 1
+// const square = num => num * num;
+
+// const incrementThenSquare = compose(increment, square);
+
+// incrementThenSquare(5)
+
